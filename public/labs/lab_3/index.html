@@ -1,4 +1,74 @@
 <!-- Write an index.html file -->
 <!-- Include your stylesheet in the head -->
-<!-- Include your script.js right before the </body> tag -->
+<!-- Include your script.js right before the tag -->
 <!-- Make a carousel of four mochi images that cycle, based on the readings from javascript.info -->
+
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <div id="carousel" class="carousel carousel-inner">
+    <button class="arrow prev ">⇦</button>
+    <div class="gallery">
+      <ul class="images">
+        <li><a href="images/onigiri_1.png"><img src="images/onigiri_1.png"></a></li>
+        <li><a href="images/onigiri_2.png"><img src="images/onigiri_2.png"></a></li>
+        <li><a href="images/onigiri_3.png"><img src="images/onigiri_3.png"></a></li>
+        <li><a href="images/onigiri_4.png"><img src="images/onigiri_4.png"></a></li>
+        <li><a href="images/roll_1.png"><img src="images/roll_1.png"></a></li>
+        <li><a href="images/roll_2.png"><img src="images/roll_2.png"></a></li>
+        <li><a href="images/roll_3.png"><img src="images/roll_3.png"></a></li>
+      </ul>
+    </div>
+    <button class="arrow next">⇨</button>
+  </div>
+
+  <script>
+    var array1 = carousel.querySelectorAll('li');
+    let i = 1;
+ 
+    /*for(let li of carousel.querySelectorAll('li')) {
+      li.style.position = 'relative';
+      li.insertAdjacentHTML('beforeend', `<span style="position:absolute;left:0;top:0">${i}</span>`);
+      i++;
+      ar.push(li);
+    }*/
+
+    array1.forEach((element) => {
+        element.style.position = 'relative'
+        element.insertAdjacentHTML('beforeend', `<span style="position:absolute;left:0;top:0">${i}</span>`);
+        i++;
+    })  
+
+    let width = 130; 
+    let count = 3; 
+
+    let list = carousel.querySelector('ul');
+    let listElems = carousel.querySelectorAll('li');
+
+    let position = 0; 
+
+    carousel.querySelector('.prev').onclick = function() {
+     
+      position += width * count;
+     
+      position = Math.min(position, 0)
+      list.style.marginLeft = position + 'px';
+    };
+
+    carousel.querySelector('.next').onclick = function() {
+    
+      position -= width * count;
+      
+      position = Math.max(position, -width * (listElems.length - count));
+      list.style.marginLeft = position + 'px';
+    };
+  </script>
+
+</body>
+</html>
