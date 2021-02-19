@@ -43,7 +43,8 @@ app.route('/api')
     console.log('POST request detected');
     console.log('Form data in res.body', req.body);
     console.log('Now send something back to your client');
-    res.send('hello world');
+    res.send('hello world'); //changed from console.log('Now send something back to your client')
+ //res.json({data: dataToSendToFrontEnd}); 
   });
 
 app.listen(port, async () => {
@@ -52,6 +53,6 @@ app.listen(port, async () => {
 
 liveReloadServer.server.once('connection', () => {
   setTimeout(() => {
-    liveReloadServer.refresh('/');
+    liveReloadServer.refresh('/'); 
   }, 100);
 });
