@@ -53,6 +53,6 @@ app.listen(port, async () => {
 
 liveReloadServer.server.once('connection', () => {
   setTimeout(() => {
-    liveReloadServer.refresh('/'); 
+    liveReloadServer.refresh('/');
   }, 100);
 });
